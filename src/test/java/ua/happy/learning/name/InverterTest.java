@@ -18,48 +18,48 @@ public class InverterTest {
 
     @Test
     @Order(1)
-    public void invert_null_throw_NPE() {
+    void invert_null_throw_NPE() {
         assertThrows(NullPointerException.class, () -> Inverter.invert(null));
     }
 
     @Test
     @Order(2)
-    public void invert_emptyString_return_emptyString() {
+    void invert_emptyString_return_emptyString() {
         assertThat(Inverter.invert(""), is(""));
         assertThat(Inverter.invert("     "), is(""));
     }
 
     @Test
     @Order(3)
-    public void invert_firstName_return_firstName() {
+    void invert_firstName_return_firstName() {
         assertThat(Inverter.invert("John"), is("John"));
         assertThat(Inverter.invert("     John   "), is("John"));
     }
 
     @Test
     @Order(4)
-    public void invert_firstLast_return_lastCommaFirst() {
+    void invert_firstLast_return_lastCommaFirst() {
         assertThat(Inverter.invert("John Smith"), is("Smith, John"));
         assertThat(Inverter.invert("John      Smith"), is("Smith, John"));
     }
 
     @Test
     @Order(5)
-    public void invert_honorificsFirstLast_return_lastCommaFirst() {
+    void invert_honorificsFirstLast_return_lastCommaFirst() {
         assertThat(Inverter.invert("Mr. John Smith"), is("Smith, John"));
         assertThat(Inverter.invert("Mrs. Jane Smith"), is("Smith, Jane"));
     }
 
     @Test
     @Order(6)
-    public void invert_firstLastPostnominals_return_lastCommaFirstPostnominals() {
+    void invert_firstLastPostnominals_return_lastCommaFirstPostnominals() {
         assertThat(Inverter.invert("John Smith Sr."), is("Smith, John Sr."));
         assertThat(Inverter.invert("John Smith Sr. PhD."), is("Smith, John Sr. PhD."));
     }
 
     @Test
     @Order(6)
-    public void invert_acceptanceTest() {
+    void invert_acceptanceTest() {
         assertThat(Inverter.invert("Mr.         John Smith     Sr.      PhD."), is("Smith, John Sr. PhD."));
     }
 }
