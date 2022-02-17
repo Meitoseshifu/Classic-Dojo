@@ -1,7 +1,9 @@
 package ua.happy.learning.fizz;
 
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.is;
@@ -11,8 +13,9 @@ import static org.hamcrest.CoreMatchers.is;
  * if divisible by 3, return "Fizz"
  * if divisible by 5, return "Buzz"
  * if divisible by 3 & 5 return "FizzBuzz"
- * if none og the above, return index
+ * if none of the above, return index
  */
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class BuzzTest {
 
     @Test

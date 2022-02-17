@@ -5,7 +5,7 @@ package ua.happy.learning.fizz;
  * if divisible by 3, return "Fizz"
  * if divisible by 5, return "Buzz"
  * if divisible by 3 & 5 return "FizzBuzz"
- * if none og the above, return index
+ * if none of the above, return index
  */
 public class Buzz {
 

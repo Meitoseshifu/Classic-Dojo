@@ -1,8 +1,6 @@
 package ua.happy.learning.bowling;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -21,6 +19,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
  *    Spare - one additional Throw
  *    Strike - two additional Throws
  */
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class GameTest {
     private Game bowling;
 

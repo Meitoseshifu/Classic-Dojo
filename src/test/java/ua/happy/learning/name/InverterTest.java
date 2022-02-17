@@ -1,7 +1,9 @@
 package ua.happy.learning.name;
 
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -14,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
  * "John Smith Sr. PhD." => "Smith, John Sr. PhD."
  * " John      Smith" => "Smith, John"
  */
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class InverterTest {
 
     @Test
