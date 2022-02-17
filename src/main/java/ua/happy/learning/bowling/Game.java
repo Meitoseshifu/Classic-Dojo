@@ -1,5 +1,8 @@
 package ua.happy.learning.bowling;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Bowling game split into 10 frames
  * Each frame contains two roles
@@ -15,4 +18,40 @@ package ua.happy.learning.bowling;
  *    Strike - two additional Throws
  */
 public class Game {
+    private int currentRoll;
+    private final int[] rolls = new int[21];
+
+    public void roll(int pinsDown) {
+        rolls[currentRoll++] = pinsDown;
+    }
+
+    public void roll(int... rolls) {
+        for (int pinsDown : rolls) {
+            roll(pinsDown);
+        }
+    }
+
+    public int score() {
+        int score = 0;
+        int index = 0;
+
+        for (int frame = 0; frame < 10; frame++) {
+            if (rolls[index] == 10) {
+                score += 10 + rolls[index+1] + rolls[index+2];
+                index++;
+            } else if(isSpare(index)) {
+                score += 10 + rolls[index+2];
+                index += 2;
+            } else {
+                score += rolls[index] + rolls[index+1];
+                index += 2;
+            }
+        }
+
+        return score;
+    }
+
+    private boolean isSpare(int index) {
+        return rolls[index] + rolls[index +1] == 10;
+    }
 }

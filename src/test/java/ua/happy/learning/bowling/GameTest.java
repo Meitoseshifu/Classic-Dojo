@@ -1,5 +1,12 @@
 package ua.happy.learning.bowling;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 /**
  * Bowling game split into 10 frames
  * Each frame contains two roles
@@ -15,4 +22,45 @@ package ua.happy.learning.bowling;
  *    Strike - two additional Throws
  */
 public class GameTest {
+    private Game bowling;
+
+    @BeforeEach
+    void setUp() {
+        bowling = new Game();
+    }
+
+    @Test
+    @Order(1)
+    public void can_score_gutter_game() {
+        bowling.roll(0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0);
+        assertThat(bowling.score(), is(0));
+    }
+
+    @Test
+    @Order(2)
+    void can_score_game_of_ones() {
+        bowling.roll(1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1);
+        assertThat(bowling.score(), is(20));
+    }
+
+    @Test
+    @Order(3)
+    void can_throw_spare_followed_by_three() {
+        bowling.roll(5,5, 3,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0);
+        assertThat(bowling.score(), is(16));
+    }
+
+    @Test
+    @Order(4)
+    void can_throw_strike_followed_three_then_three() {
+        bowling.roll(10, 3,3, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0);
+        assertThat(bowling.score(), is(22));
+    }
+
+    @Test
+    @Order(5)
+    void can_score_perfect_game() {
+        bowling.roll(10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+        assertThat(bowling.score(), is(300));
+    }
 }
